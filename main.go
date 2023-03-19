@@ -19,7 +19,7 @@ var templatesFS embed.FS
 
 func main() {
 	http.HandleFunc("/", serveHTML)
-	http.HandleFunc("/success.html", serveSuccessHTML)
+	http.HandleFunc("/success", serveSuccessHTML)
 	http.HandleFunc("/api/reboot", rebootRaspberryPi)
 
 	staticFS, err := fs.Sub(staticFiles, "static")
