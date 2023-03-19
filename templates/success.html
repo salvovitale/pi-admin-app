@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Raspberry Pi Rebooting</title>
+    <link rel="stylesheet" href="/static/css/styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Raspberry Pi is rebooting...</h1>
+        <p>Your Raspberry Pi will reboot shortly. Please wait for the Raspberry Pi to restart before accessing the control panel again.</p>
+        <p>Time remaining: <span id="countdown">180</span> seconds</p>
+    </div>
+    <script>
+        let timeLeft = 180;
+        const countdownEl = document.getElementById("countdown");
+
+        function updateCountdown() {
+            timeLeft--;
+            countdownEl.textContent = timeLeft;
+
+            if (timeLeft <= 0) {
+                clearInterval(countdownInterval);
+                window.location.href = "/";
+            }
+        }
+
+        const countdownInterval = setInterval(updateCountdown, 1000);
+    </script>
+</body>
+</html>
